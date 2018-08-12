@@ -196,3 +196,75 @@ print(np.sqrt(B))
 C = np.array([2., -1., 4.])
 print('=' * 60)
 print(np.add(B, C))
+
+# Indexing, Slicing and Iterating
+a = np.arange(10)**3
+print('=' * 60)
+print(a)
+print(a[2])
+print(a[2:5])
+a[:6:2] = -1000
+print('=' * 60)
+print(a)
+print('=' * 60)
+# reversed a
+print(a[::-1])
+print('=' * 60)
+for i in a:
+    print(i, i**(1 / 3.))
+
+
+def func(x, y):
+    return 10 * x + y
+
+
+b = np.fromfunction(func, (5, 4), dtype=int)
+print('=' * 60)
+print(b)
+print(b[2, 3])
+print('=' * 60)
+print(b[0:5, 1])
+print('=' * 60)
+print(b[:, 1])
+print('=' * 60)
+print(b[1:3, :])
+print('=' * 60)
+print(b[-1])
+
+c = np.array([[[0, 1, 2], [10, 12, 13]], [[100, 101, 102], [110, 112, 113]]])
+print('=' * 60)
+print(c)
+print('=' * 60)
+print(c[1, ...])
+print('=' * 60)
+print(c[..., 2])
+
+for row in b:
+    print(row)
+
+print('=' * 60)
+for element in b.flat:
+    print(element)
+
+# Shape Manipulation
+tmp = 10 * np.random.random((3, 4))
+a = np.floor(tmp)
+print('=' * 60)
+print(tmp)
+print('=' * 60)
+print(a)
+print(a.shape)
+
+print('=' * 60)
+print(a.ravel())
+print('=' * 60)
+print(a.reshape(6, 2))
+print('=' * 60)
+print(a.T)
+print('=' * 60)
+print(a)
+a.resize(2, 6)
+print('=' * 60)
+print(a)
+
+# Stacking together different arrays
