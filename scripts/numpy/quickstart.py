@@ -11,6 +11,7 @@
 
 import numpy as np
 from numpy import pi
+from numpy import newaxis
 
 # The Basics
 """
@@ -268,3 +269,119 @@ print('=' * 60)
 print(a)
 
 # Stacking together different arrays
+tmp = 10 * np.random.random((2, 2))
+a = np.floor(tmp)
+print('=' * 60)
+print(a)
+tmp = 10 * np.random.random((2, 2))
+b = np.floor(tmp)
+print('=' * 60)
+print(b)
+print('=' * 60)
+print(np.vstack((a, b)))
+print('=' * 60)
+print(np.hstack((a, b)))
+print('=' * 60)
+print(np.column_stack((a, b)))
+
+a = np.array([4., 2.])
+b = np.array([3., 8.])
+print('=' * 60)
+print(a)
+print('=' * 60)
+print(b)
+print('=' * 60)
+print(np.column_stack((a, b)))
+print('=' * 60)
+print(np.hstack((a, b)))
+print('=' * 60)
+print(a[:, newaxis])
+print('=' * 60)
+print(np.column_stack((a[:, newaxis], b[:, newaxis])))
+print('=' * 60)
+print(np.r_[1:4, 0, 4])
+
+# Splitting one array into several smaller ones
+tmp = 10 * np.random.random((2, 12))
+a = np.floor(tmp)
+print('=' * 60)
+print(a)
+print('=' * 60)
+print(np.hsplit(a, 3))
+print('=' * 60)
+print(np.hsplit(a, (3, 4)))
+
+# Copies and Views
+# No copy at all
+a = np.arange(12)
+# print('=' * 60)
+# print(a)
+b = a
+print(b is a)
+print('=' * 60)
+b.shape = 3, 4
+print('=' * 60)
+print(a.shape)
+
+
+def func1(x):
+    print(id(x))
+
+
+print('=' * 60)
+print(id(a))
+print('=' * 60)
+func1(a)
+
+# View or Shallow copy
+# Different array objects can share the same data. The view method creates a new array object
+# that looks at the same data.
+c = a.view()
+print('=' * 60)
+print(c)
+print('=' * 60)
+print(c is a)
+print(c.base is a)
+print(c.flags.owndata)
+print(c.shape)
+print('=' * 60)
+print(a.shape)
+print('=' * 60)
+c.shape = 2, 6
+print('=' * 60)
+print(c)
+print('=' * 60)
+print(a)
+c[0, 4] = 1234
+print('=' * 60)
+print(c)
+print('=' * 60)
+print(a)
+
+# Deep Copy
+# The copy method makes a complete copy of the array and its data
+d = a.copy()
+print('=' * 60)
+print(d)
+print(d is a)
+print(d.base is a)
+d[0, 0] = 9999
+print('=' * 60)
+print(d)
+print('=' * 60)
+print(a)
+
+# Less Basic
+# Broadcasting rules
+
+# Fancy indexing and index tricks
+# Indexing with Arrays of Indices
+a = np.arange(12)**2
+i = np.array([1, 1, 3, 8, 5])
+print('=' * 60)
+print(a)
+print('=' * 60)
+print(a[i])
+j = np.array([[3, 4], [9, 7]])
+print('=' * 60)
+print(a[j])
