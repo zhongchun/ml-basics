@@ -457,3 +457,7 @@ print('=' * 60)
 print(a[b1, b2])
 
 # Linear Algebra
+# Simple Array Operation
+a = np.array([[1.0, 2.0], [3.0, 4.0]])
+print('=' * 60)
+print(a)
