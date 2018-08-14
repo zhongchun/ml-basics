@@ -461,3 +461,37 @@ print(a[b1, b2])
 a = np.array([[1.0, 2.0], [3.0, 4.0]])
 print('=' * 60)
 print(a)
+print('=' * 60)
+print(a.transpose())
+print('=' * 60)
+print(np.linalg.inv(a))
+
+# Tricks and Tips
+# “Automatic” Reshaping
+a = np.arange(30)
+print('=' * 60)
+print(a)
+a.shape = 2, -1, 3
+print(a.shape)
+print('=' * 60)
+print(a)
+
+# Histograms
+# Build a vector of 10000 normal deviates with variance 0.5^2 and mean 2
+mu, sigma = 2, 0.5
+v = np.random.normal(mu, sigma, 10000)
+print('=' * 60)
+print(v.size)
+print(type(v))
+plt.hist(v, bins=50, density=1)
+# plt.show()
+
+# Compute the histogram with numpy and then plot it
+(n, bins) = np.histogram(v, bins=50, density=True)
+print('=' * 60)
+print(n)
+print('=' * 60)
+print(bins)
+print(bins.size)
+plt.plot(.5 * (bins[1:] + bins[:-1]), n)
+plt.show()
