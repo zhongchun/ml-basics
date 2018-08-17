@@ -10,8 +10,8 @@
 """
 
 import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
+# import matplotlib as mpl
+# import matplotlib.pyplot as plt
 from numpy import poly1d
 
 # 1. Basic functions
