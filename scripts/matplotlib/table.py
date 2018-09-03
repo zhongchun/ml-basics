@@ -61,3 +61,4 @@ plt.xticks([])
 plt.title('Loss by Disaster')
 
 plt.show()
+
